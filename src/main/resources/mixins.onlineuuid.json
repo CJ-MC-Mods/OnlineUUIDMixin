@@ -6,5 +6,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "OnlineUUIDMixin"
-  ]
+  ],
+  "minVersion": "0.7.4"
 }

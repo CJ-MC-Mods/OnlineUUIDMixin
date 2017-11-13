@@ -115,14 +115,14 @@ jar {
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': 'mixins.onlineuuid.json',
             'FMLCorePluginContainsFMLMod': 'true',
+            "TweakOrder": 0,
+            "minVersion": "0.7.4",
     )
 }
 
 shadowJar {
     mainSpec.sourcePaths.clear()
     dependsOn reobfJar
-    classifier ''
-    exclude 'dummyThing'
     dependencies {
         include dependency('org.spongepowered:mixin')
     }
