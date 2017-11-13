@@ -14,6 +14,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
     }
 }
 
@@ -22,6 +23,7 @@ apply plugin: 'idea'
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 
 repositories {
@@ -114,4 +116,17 @@ jar {
             'MixinConfigs': 'mixins.onlineuuid.json',
             'FMLCorePluginContainsFMLMod': 'true',
     )
+}
+
+shadowJar {
+    mainSpec.sourcePaths.clear()
+    dependsOn reobfJar
+    classifier ''
+    exclude 'dummyThing'
+    dependencies {
+        include dependency('org.spongepowered:mixin')
+    }
+    afterEvaluate {
+        from zipTree(reobfJar.jar)
+    }
 }

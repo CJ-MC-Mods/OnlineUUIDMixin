@@ -11,9 +11,9 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import java.util.UUID;
 
-@Mixin(NetHandlerLoginServer.class)
+//@Mixin(NetHandlerLoginServer.class)
 public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickable {
-    @Overwrite
+    //@Overwrite
     protected GameProfile getOfflineProfile(GameProfile original)
     {
         UUID uuid = FMLServerHandler.instance().getServer().getPlayerProfileCache().getGameProfileForUsername(original.getName()).getId();
