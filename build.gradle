@@ -104,7 +104,7 @@ processResources
 
 sourceSets {
     main {
-        refMap = "mixins.myplugin.refmap.json"
+        refMap = "mixins.onlineuuid.refmap.json"
     }
 }
 
