@@ -1,0 +1,9 @@
+{
+  "package": "com.cjm721.onlineuuid",
+  "refmap": "mixins.myplugin.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "OnlineUUIDMixin"
+  ]
+}

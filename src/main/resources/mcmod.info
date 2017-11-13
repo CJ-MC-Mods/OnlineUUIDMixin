@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "onlineuuid",
+    "name": "Onlineuuid",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "CJ Miller (cjm721)"
+    ],
+    "credits": "",
+    "logoFile": ""
+  }
+]
