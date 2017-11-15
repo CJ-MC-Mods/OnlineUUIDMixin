@@ -27,8 +27,9 @@ public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickab
     /**
      * @author CJ
      */
+    @Override
     @Overwrite
-    public void disconnect(ITextComponent reason) {
+    public void onDisconnect(ITextComponent reason) {
         System.out.println("Disconnect from mixin");
     }
 
