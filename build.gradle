@@ -3,6 +3,10 @@ buildscript {
         jcenter()
         mavenLocal()
         maven {
+            name = 'gradle-plugins'
+            url = 'https://plugins.gradle.org/m2'
+        }
+        maven {
             name = 'forge'
             url = "http://files.minecraftforge.net/maven"
         }
@@ -14,7 +18,7 @@ buildscript {
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
         classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
-        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
+        classpath 'gradle.plugin.org.spongepowered:spongegradle:0.8.1'
     }
 }
 
@@ -23,14 +27,20 @@ apply plugin: 'idea'
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'com.github.johnrengelman.shadow'
+
 
 
 repositories {
+    mavenCentral()
     maven {
         name = 'sponge'
         url = 'https://repo.spongepowered.org/maven'
     }
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
 }
 
 idea{
@@ -81,7 +91,10 @@ minecraft {
 }
 
 dependencies {
-    compile 'org.spongepowered:mixin:0.7.4-SNAPSHOT'
+    embed('org.apache.logging.log4j:log4j-core:2.0-beta9')
+    embed('org.spongepowered:mixin:0.6.6-SNAPSHOT') {
+        exclude module: 'launchwrapper'
+    }
 }
 
 processResources
@@ -104,29 +117,46 @@ processResources
     }
 }
 
-sourceSets {
-    main {
-        refMap = "mixins.onlineuuid.refmap.json"
-    }
-}
+//sourceSets {
+//    main {
+//        refMap = "mixins.onlineuuid.refmap.json"
+//    }
+//}
 
 jar {
-    manifest.attributes(
-            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
-            'MixinConfigs': 'mixins.onlineuuid.json',
-            'FMLCorePluginContainsFMLMod': 'true',
-    )
+//    manifest.attributes(
+//            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+//            'MixinConfigs': 'mixins.onlineuuid.json',
+//            'FMLCorePluginContainsFMLMod': 'true',
+//    )
+
+    manifest {
+        attributes 'FMLCorePlugin': 'com.cjm721.onlineuuid.CoreMod'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+        attributes 'MixinConfigs': 'mixins.onlineuuid.json'
+        attributes 'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker'
+        attributes 'TweakOrder': 0
+        attributes 'ForceLoadAsMod': true
+    }
+
+    from configurations.embed.collect {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        it.isDirectory() ? it : zipTree(it)
+    }
 }
 
-shadowJar {
-    mainSpec.sourcePaths.clear()
-    dependsOn reobfJar
-    classifier ''
-    exclude 'dummyThing'
-    dependencies {
-        include dependency('org.spongepowered:mixin')
-    }
-    afterEvaluate {
-        from zipTree(reobfJar.jar)
-    }
-}
+//shadowJar {
+//    mainSpec.sourcePaths.clear()
+//    dependsOn reobfJar
+//    classifier ''
+//    exclude 'dummyThing'
+//    dependencies {
+//        include dependency('org.spongepowered:mixin')
+//    }
+//    afterEvaluate {
+//        from zipTree(reobfJar.jar)
+//    }
+//}

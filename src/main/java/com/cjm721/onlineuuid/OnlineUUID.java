@@ -5,7 +5,10 @@ import net.minecraftforge.fml.common.Mod;
 @Mod(
         modid = OnlineUUID.MOD_ID,
         name = OnlineUUID.MOD_NAME,
-        version = OnlineUUID.VERSION
+        version = OnlineUUID.VERSION,
+        serverSideOnly = true,
+        acceptedMinecraftVersions = "[1.12,1.13)",
+        acceptableRemoteVersions = "*"
 )
 public class OnlineUUID {
 

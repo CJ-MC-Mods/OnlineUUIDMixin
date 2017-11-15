@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.cjm721.onlineuuid",
+  "package": "com.cjm721.onlineuuid.mixins",
   "refmap": "mixins.onlineuuid.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
