@@ -92,7 +92,7 @@ minecraft {
 
 dependencies {
     embed('org.apache.logging.log4j:log4j-core:2.0-beta9')
-    embed('org.spongepowered:mixin:0.6.6-SNAPSHOT') {
+    embed('org.spongepowered:mixin:0.7.5-SNAPSHOT') {
         exclude module: 'launchwrapper'
     }
 }
@@ -117,11 +117,11 @@ processResources
     }
 }
 
-//sourceSets {
-//    main {
-//        refMap = "mixins.onlineuuid.refmap.json"
-//    }
-//}
+sourceSets {
+    main {
+        ext.refMap = "mixins.onlineuuid.refmap.json"
+    }
+}
 
 jar {
 //    manifest.attributes(
