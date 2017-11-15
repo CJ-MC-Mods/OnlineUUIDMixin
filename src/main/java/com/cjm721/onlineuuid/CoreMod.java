@@ -13,7 +13,6 @@ public class CoreMod implements IFMLLoadingPlugin {
 
     public CoreMod() {
         MixinBootstrap.init();
-        MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.onlineuuid.json");
     }
 

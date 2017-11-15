@@ -1,10 +1,13 @@
 {
   "required": true,
   "package": "com.cjm721.onlineuuid.mixins",
-  "refmap": "mixins.onlineuuid.refmap.json",
+  "refmap": "mixins.common.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "OnlineUUIDMixin"
-  ]
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

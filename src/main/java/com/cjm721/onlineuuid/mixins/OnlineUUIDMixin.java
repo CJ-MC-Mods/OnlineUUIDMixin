@@ -14,6 +14,9 @@ import java.util.UUID;
 
 @Mixin(NetHandlerLoginServer.class)
 public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickable {
+    /**
+     * @author CJ
+     */
     @Overwrite
     protected GameProfile getOfflineProfile(GameProfile original)
     {
@@ -21,6 +24,9 @@ public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickab
         return new GameProfile(uuid, original.getName());
     }
 
+    /**
+     * @author CJ
+     */
     @Overwrite
     public void disconnect(ITextComponent reason) {
         System.out.println("Disconnect from mixin");
