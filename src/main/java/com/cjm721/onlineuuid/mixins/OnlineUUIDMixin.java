@@ -32,6 +32,4 @@ public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickab
     public void onDisconnect(ITextComponent reason) {
         System.out.println("Disconnect from mixin");
     }
-
-
 }

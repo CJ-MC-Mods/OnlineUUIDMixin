@@ -117,19 +117,13 @@ processResources
     }
 }
 
-//sourceSets {
-//    main {
-//        refMap = "mixins.onlineuuid.refmap.json"
-//    }
-//}
+sourceSets {
+    main {
+        refMap = "mixins.onlineuuid.refmap.json"
+    }
+}
 
 jar {
-//    manifest.attributes(
-//            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
-//            'MixinConfigs': 'mixins.onlineuuid.json',
-//            'FMLCorePluginContainsFMLMod': 'true',
-//    )
-
     manifest {
         attributes 'FMLCorePlugin': 'com.cjm721.onlineuuid.CoreMod'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
