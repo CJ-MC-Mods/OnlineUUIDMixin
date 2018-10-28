@@ -1,6 +1,8 @@
 package com.cjm721.onlineuuid;
 
+import net.minecraft.server.management.PlayerProfileCache;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(
         modid = OnlineUUID.MOD_ID,
@@ -21,4 +23,9 @@ public class OnlineUUID {
      */
     @Mod.Instance(MOD_ID)
     public static OnlineUUID INSTANCE;
+    
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        PlayerProfileCache.setOnlineMode(true);
+    }
 }
