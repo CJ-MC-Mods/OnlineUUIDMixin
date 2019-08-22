@@ -15,6 +15,7 @@ import java.util.UUID;
 public abstract class OnlineUUIDMixin implements INetHandlerLoginServer, ITickable {
     /**
      * @author CJ
+     * @reason Because its the whole point of this mod
      */
     @Overwrite
     protected GameProfile getOfflineProfile(GameProfile original)

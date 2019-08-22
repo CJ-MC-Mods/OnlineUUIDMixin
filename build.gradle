@@ -93,7 +93,7 @@ minecraft {
 
 dependencies {
     embed('org.apache.logging.log4j:log4j-core:2.0-beta9')
-    embed('org.spongepowered:mixin:0.7.5-SNAPSHOT') {
+    embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'launchwrapper'
     }
 }
